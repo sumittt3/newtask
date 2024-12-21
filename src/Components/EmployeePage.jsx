@@ -11,8 +11,8 @@ export default function EmployeePage(props) {
         const response = await axios.get(
           "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001"
         );
-        if (response.data && response.data.length === 0) {
-          setError(true);
+         if (!response.data || response.data.length === 0) {
+          setError("No data found or API returned an empty response.");
           setLoading(false);
           return;
         }
