@@ -72,4 +72,6 @@ export default function EmployeePage(props) {
     ))
   )}
 </ul>
-
+</div>
+  );
+}
