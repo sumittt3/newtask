@@ -37,6 +37,7 @@ export default function EmployeePage(props) {
     );
   }
   return (
+    
     <div className="container mx-auto p-5">
       <h2 className="text-center text-2xl font-bold mb-6">
         Welcome to the Employee List Page
@@ -46,27 +47,29 @@ export default function EmployeePage(props) {
       </p>
 
       <ul className="flex flex-wrap gap-6 justify-center">
-        {empData.map((employee) => (
-          <li
-            key={employee.id}
-            className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-all"
-            style={{width: "250px", textAlign: "center"}}
-          >
-            <img
-              src={employee.imageUrl}
-              alt={`${employee.firstName} ${employee.lastName}`}
-              className="w-24 h-24 rounded-full mx-auto mb-4"
-            />
-            <h3 className="text-xl font-semibold">{`${employee.firstName} ${employee.lastName}`}</h3>
-            <p className="text-sm text-gray-600">{employee.email}</p>
-            <p className="text-sm text-gray-600">{employee.contactNumber}</p>
-            <p className="text-sm text-gray-600">Age: {employee.age}</p>
-            <p className="text-sm text-gray-600">DOB: {employee.dob}</p>
-            <p className="text-sm text-gray-600">Salary: ${employee.salary}</p>
-            <p className="text-sm text-gray-600">Address: {employee.address}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+  {empData.length === 0 ? (
+    <li className="w-full text-center text-red-500">Error: No employee data available. Please check the API.</li>
+  ) : (
+    empData.map((employee) => (
+      <li
+        key={employee.id}
+        className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-all"
+        style={{width: "250px", textAlign: "center"}}
+      >
+        <img
+          src={employee.imageUrl}
+          alt={`${employee.firstName} ${employee.lastName}`}
+          className="w-24 h-24 rounded-full mx-auto mb-4"
+        />
+        <h3 className="text-xl font-semibold">{`${employee.firstName} ${employee.lastName}`}</h3>
+        <p className="text-sm text-gray-600">{employee.email}</p>
+        <p className="text-sm text-gray-600">{employee.contactNumber}</p>
+        <p className="text-sm text-gray-600">Age: {employee.age}</p>
+        <p className="text-sm text-gray-600">DOB: {employee.dob}</p>
+        <p className="text-sm text-gray-600">Salary: ${employee.salary}</p>
+        <p className="text-sm text-gray-600">Address: {employee.address}</p>
+      </li>
+    ))
+  )}
+</ul>
+
